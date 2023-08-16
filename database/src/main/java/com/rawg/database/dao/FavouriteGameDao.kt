@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface FavouriteGameDao {
-    @Query("""SELECT * FROM favourite_games""")
+    @Query("""SELECT * FROM favourite_games ORDER BY created_at DESC""")
     fun getFavouriteGames(): Flow<List<FavouriteGameEntity>>
 
     @Query("""SELECT * FROM favourite_games WHERE slug = :slug""")
