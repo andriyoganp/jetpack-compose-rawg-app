@@ -1,0 +1,52 @@
+plugins {
+    alias libs.plugins.android.application
+    alias libs.plugins.jetbrains.kotlin.android
+    alias libs.plugins.jetbrains.kotlin.kapt
+    alias libs.plugins.dagger.hilt
+}
+
+def gradlePath = "$rootDir/gradle"
+apply from: "${gradlePath}/common.gradle"
+apply from: "${gradlePath}/compose.gradle"
+apply from: "${gradlePath}/hilt.gradle"
+
+android {
+    namespace 'com.rawg.app'
+
+    defaultConfig {
+        applicationId "com.rawg.app"
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    packaging {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+}
+
+dependencies {
+    implementation project(":presentation")
+    implementation project(":ui")
+    implementation libs.androidx.activity.compose
+    implementation libs.androidx.core.ktx
+    implementation libs.androidx.lifecycle.runtime.ktx
+
+    implementation libs.androidx.navigation.compose
+    testImplementation libs.junit
+    androidTestImplementation libs.androidx.junit
+    androidTestImplementation libs.androidx.espresso.core
+}

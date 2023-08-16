@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="favourite_games">Favourite Games</string>
+    <string name="favourite_game_is_empty">Favourite game is empty</string>
+    <string name="games">Games</string>
+    <string name="game_detail">Game Detail</string>
+</resources>

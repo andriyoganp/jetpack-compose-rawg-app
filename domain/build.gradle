@@ -1,0 +1,20 @@
+plugins {
+    alias libs.plugins.android.library
+    alias libs.plugins.jetbrains.kotlin.android
+    alias libs.plugins.jetbrains.kotlin.kapt
+    alias libs.plugins.dagger.hilt
+}
+
+def gradlePath = "$rootDir/gradle"
+apply from: "${gradlePath}/common.gradle"
+apply from: "${gradlePath}/hilt.gradle"
+
+android {
+    namespace 'com.rawg.domain'
+}
+
+dependencies {
+    implementation project(":core")
+    implementation project(":data")
+    implementation project(":model")
+}
